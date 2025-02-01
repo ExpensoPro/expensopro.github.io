@@ -1,2 +1,2 @@
-let baseUrl ="http://localhost:8680";
+let baseUrl ="https://fig5456ai3.execute-api.us-east-2.amazonaws.com/dev";
 export default baseUrl;
