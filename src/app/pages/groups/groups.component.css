@@ -1,0 +1,92 @@
+.userList td{
+    padding: 10px 20px;
+}
+.grpUserList td{
+    padding: 10px 20px;
+}
+#grpUsersComp{
+    display:none;
+}
+.newgrp {
+    display:none;
+    position: absolute;
+    top: 0px;
+    left: 30%;
+}
+.newgrp mat-card{
+    max-width: 500px;
+    min-width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    background: #ddbff0;
+    z-index: 1200;
+    box-shadow: 2px 2px purple;
+}
+.newgrp table td{
+    text-align: left;
+}
+.usrdet {
+    display:none;
+    position: absolute;
+    top: 0px;
+    left: 30%;
+}
+.usrdet mat-card{
+    max-width: 500px;
+    min-width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    background: #ddbff0;
+    z-index: 1200;
+    box-shadow: 2px 2px purple;
+}
+.usrdet table td{
+    text-align: left;
+}
+.warning{
+    color:red;
+}
+
+.pdLeftTable{
+    padding-left:45px;
+}
+app-groups{
+    width: -webkit-fill-available;
+    margin-right: 20px;
+}
+#addGrpBtn{
+    float: right;
+    padding: 0px 50px;
+    margin-top: 9px;
+}
+.grpUserList table{
+    width: -webkit-fill-available;
+
+}
+#closeGrpUserBtn {
+    float: right;
+    margin-left: 10px;
+    margin-top: 9px;
+}
+#searchUserCard mat-card{
+    min-width: 1000px;
+    margin: auto;
+    background: #dcc4e6;
+    top: 0px !important;
+    z-index: 1000;
+    position: absolute;
+    left: 15%;
+    text-align: center;
+}
+#searchUserCard{
+    display:none;
+}
+#searchUserCard table{
+    width: -webkit-fill-available;
+    margin-top: 20px;
+}
+#searchUserCard td{
+    padding: 10px 20px;
+}

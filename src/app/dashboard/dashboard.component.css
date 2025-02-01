@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  } 
+  #groupSelect mat-select {
+    padding: 0px 30px 35px 30px;
+  }
+  .groupSelect mat-select > label {
+    margin: 0px 0;
+    border-radius: 0;
+  }
+  label{
+    margin: 0px 0;
+    border-radius: 0;
+  }
+  mat-form-field#groupSelect {
+    background: #3885af;
+    border-radius: 10px;
+    height: 53px;
+    padding-top: 0px;
+    padding-left: 20px;
+    width: 612px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

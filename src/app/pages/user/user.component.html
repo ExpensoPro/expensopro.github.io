@@ -1,0 +1,122 @@
+
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" color="primary">
+      <div class="row" style="display:block;">
+        
+        <h4 style="margin-left: 45%;">User Profile</h4>
+        <!-- <div class="userList">
+            
+            <mat-card>
+                <table>
+                    <tr>
+                        <td class="table-header">ID</td>
+                        <td class="table-header">First Name</td>
+                        <td class="table-header">Last Name</td>
+                        <td class="table-header">Email</td>
+                        <td class="table-header">Phone</td>
+                        <td class="table-header">Role</td>
+                        <td class="table-header">Action</td>
+                    </tr>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.mobile}}</td>
+                        <td>{{user.authorities[0].authority}}</td>
+                        <td *ngIf="currentUserId!=user.id"><button (click)="viewUserDetails(user)" mat-raised-button color="accent">View</button></td>
+                        <td *ngIf="currentUserId==user.id"><button (click)="viewUserDetails(user)" mat-raised-button color="accent">View / Edit</button></td>
+                    </tr>
+                    
+                </table>
+            </mat-card>
+            
+            
+        </div> -->
+        <div class="usrdet">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <!-- <mat-card-title>User Details</mat-card-title> -->
+                  <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/assets/user_pen_icon.jpg" style="max-width:150px;max-height: 150px;;" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <table class="full-width">
+                        
+                            <tr>
+                                <td class="pdLeftTable">Id</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userID" [(ngModel)]="user.id" [readonly]=true name="id" matInput placeholder={{user.id}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pdLeftTable">First Name</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userFN" [(ngModel)]="user.firstName" name="firstName" matInput placeholder={{user.firstName}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="pdLeftTable">LastName</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userLN" [(ngModel)]="user.lastName" name="lastName" matInput placeholder={{user.lastName}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pdLeftTable">Email</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userEmail" [(ngModel)]="user.email" name="email" matInput placeholder={{user.email}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td  class="pdLeftTable">Phone</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userPhone" [(ngModel)]="user.mobile" name="mobile" matInput placeholder={{user.mobile}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="pdLeftTable">Role</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userRole" [readonly]=true  name="role" matInput>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr *ngIf="editAccessWarning" id="askUpdatePass">
+                                <td></td>
+                                <td (click)="showPasswordField()" style="color:#030fd5ad;">update password?</td>
+                            </tr>
+                            <tr *ngIf="updatePassword">
+                                <td class="pdLeftTable">Password</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input [required]="true" id="userPassword"  name="password" matInput placeholder="Enter new password">
+                                        <mat-hint>Password must contain atleast [ one uppercase, lowercase, special character and one number.</mat-hint>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                       
+                        
+                    </table>
+                  
+                </mat-card-content>
+                <mat-card-actions>
+                    <p *ngIf="!editAccessWarning" class="warning">You do not have permissions to update the data.</p>
+                    <button *ngIf="editAccessWarning" type="submit" (click)="updateFormSubmit()" mat-raised-button style="background: #027b41;color: white;">Update</button>
+                    <!-- <button mat-raised-button (click)="closeViewCard()" color="accent">Close</button> -->
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+    </div>
+  </div>

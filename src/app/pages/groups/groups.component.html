@@ -1,0 +1,233 @@
+
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" color="primary">
+      <div class="row" id="groupList" style="display:block;">
+        
+        <h3 class="text-center" style="line-height: 46px;">Group List
+            <button id="addGrpBtn" class="bg-success text-white" mat-raised-button (click)="openNewGroupForm()">Add New Group</button>
+        </h3>
+        <div class="userList">
+            <!-- <h3 *ngFor="let user of users">{{user.email}}</h3> -->
+            <mat-card>
+                <table>
+                    <tr>
+                        <td class="table-header">ID</td>
+                        <td class="table-header">Group Name</td>
+                        <td class="table-header">Group Description</td>
+                        <td class="table-header">Group Owner</td>
+                        <td class="table-header">Created On</td>
+                        <td class="table-header text-center" style="width: 230px;" >Action</td>
+                    </tr>
+                    <tr *ngFor="let group of groups">
+                        <td>{{group.id}}</td>
+                        <td>{{group.groupName}}</td>
+                        <td>{{group.groupDescription}}</td>
+                        <td>{{group.groupOwner.email}}</td>
+                        <td>{{group.dateCreated}}</td>
+                        <td><button (click)="viewGroupInfo(group.id)" class="bg-info text-white" mat-raised-button >View</button>
+                            <button routerLink="spend-manager" (click)="redirectToAddSpend()" class="bg-success text-white ml20"  mat-raised-button ><mat-icon>add_circle</mat-icon> &nbsp; Spend</button>
+                        </td>
+                        <!-- <td *ngIf=""><button  mat-raised-button color="accent">View / Edit</button></td> -->
+                    </tr>
+                    
+                </table>
+            </mat-card>
+            
+            
+        </div>
+         <div class="usrdet">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>Group Details</mat-card-title>                  
+                  <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-header>
+                
+                <!-- <img mat-card-image src="/assets/user_pen_icon.jpg" style="max-width:150px;max-height: 150px;;" alt="Photo of a Shiba Inu"> -->
+                <mat-card-content>
+                    <table class="full-width">
+                        
+                            <tr>
+                                <td class="pdLeftTable">Id</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userID" [(ngModel)]="group.id" [readonly]=true name="id" matInput placeholder={{group.id}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pdLeftTable">Group Name</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userFN" [(ngModel)]="group.groupName" [readonly]=!isGrpOwner name="firstName" matInput placeholder={{group.groupName}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="pdLeftTable">Group Description</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userLN" [(ngModel)]="group.groupDescription" [readonly]=!isGrpOwner name="lastName" matInput placeholder={{group.groupDescription}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pdLeftTable">Group Owner</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userEmail" *ngIf="!addNewGrp" [(ngModel)]="group.groupOwner.email" [readonly]=true name="email" matInput placeholder={{group.groupOwner.email}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td  class="pdLeftTable">Created On</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userPhone" [(ngModel)]="group.dateCreated" [readonly]=true name="mobile" matInput placeholder={{group.dateCreated}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td  class="pdLeftTable">Role</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userRole" [readonly]=true  name="role" matInput>
+                                    </mat-form-field>
+                                </td>
+                            </tr> -->
+                            <!-- <tr *ngIf="" id="askUpdatePass">
+                                <td></td>
+                                <td (click)="" style="color:blue;">update password?</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td></td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input [required]="true" id="userPassword"  name="password" matInput placeholder="Enter new password">
+                                        
+                                    </mat-form-field>
+                                </td>
+                            </tr> -->
+                       
+                        
+                    </table>
+                  
+                </mat-card-content>
+                <mat-card-actions>
+                    <p class="warning" *ngIf="!isGrpOwner">You do not have permissions to update the data.</p>
+                    <button type="submit" *ngIf="isGrpOwner" (click)="updateGroupInfo()" class="bg-success text-white"  mat-raised-button >Update</button>
+                    <button mat-raised-button (click)="closeViewGroup()" class="bg-danger text-white">Close</button>
+                    <button *ngIf="isMemberOfGroup" (click)="loadGroupUserList(group.id)" class="bg-info text-white" mat-raised-button>View Group Users</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+        <div class="newgrp">
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title *ngIf="addNewGrp">New Group</mat-card-title>
+                  
+                  <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-header>
+                
+                <!-- <img mat-card-image src="/assets/user_pen_icon.jpg" style="max-width:150px;max-height: 150px;;" alt="Photo of a Shiba Inu"> -->
+                <mat-card-content>
+                    <table class="full-width">
+                            <tr>
+                                <td class="pdLeftTable">Group Name</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userFN" [(ngModel)]="newGroup.groupName" name="firstName" matInput placeholder="Enter Group Name">
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="pdLeftTable">Group Description</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userLN" [(ngModel)]="newGroup.groupDescription" name="lastName" matInput placeholder="Enter Description ">
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                    </table>
+                  
+                </mat-card-content>
+                <mat-card-actions>
+                    <button type="submit" (click)="createNewGroup()" mat-raised-button style="background: #027b41;color: white;">Add</button>
+                    <button class="bg-danger text-white" mat-raised-button (click)="closeNewGrp()" >Close</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+        
+    </div>
+    <div class="row" id="grpUsersComp">
+        
+        <h3 class="text-center" style="line-height: 46px;">Group Member List
+            <button id="closeGrpUserBtn" class="bg-danger text-white" mat-raised-button (click)="closeGrpUserList()">Close</button>
+            <button id="addGrpBtn" class="bg-success text-white" mat-raised-button (click)="showSearchCard()">Add New Group Member</button>
+        </h3>
+        <div class="grpUserList">
+            <!-- <h3 *ngFor="let user of users">{{user.email}}</h3> -->
+            <mat-card>
+                <table>
+                    <tr>
+                        <td class="table-header">ID</td>
+                        <td class="table-header">First Name</td>
+                        <td class="table-header">Last Name</td>
+                        <td class="table-header">Email</td>
+                        <td class="table-header">Phone</td>
+                        <td class="table-header">Role</td>
+                        <td class="table-header">Action</td>
+                    </tr>
+                    <tr *ngFor="let grpUser of groupUsers">
+                        <td>{{grpUser.id}}</td>
+                        <td>{{grpUser.firstName}}</td>
+                        <td>{{grpUser.lastName}}</td>
+                        <td>{{grpUser.email}}</td>
+                        <td>{{grpUser.mobile}}</td>
+                        <td>{{grpUser.authorities[0].authority}}</td>
+                        <td><button (click)="removeGrpUserFromGrp(currentGroup.id,grpUser.id)" class="bg-danger text-white" mat-raised-button>Remove</button></td>
+                    </tr>
+                    
+                </table>
+            </mat-card>
+            
+            
+        </div>
+    </div>
+    <div class="row" id="searchUserCard">
+        
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Search </mat-card-title> 
+              <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+                <mat-form-field appearance="outline" class="full-width">
+                    <input id="searchUserInput" (change)="searchUser()" name="searchUser" matInput placeholder="Enter Email">
+                </mat-form-field>
+                <table>
+                    <tr *ngIf="usersList.length>0">
+                        <td><b>First Name</b></td>
+                        <td><b>Last Name</b></td>
+                        <td><b>UserName / Email</b></td>
+                        <td>Action</td>
+                    </tr>
+                    <tr *ngFor="let user of usersList">
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td><button (click)="addGroupUser(user)" class="bg-success text-white">Add</button></td>
+                    </tr>
+                </table>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button class="bg-danger text-white" (click)="closeSearchUserCard()"  color="accent">Close</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    </div>
+  </div>

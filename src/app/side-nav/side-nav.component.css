@@ -1,0 +1,23 @@
+mat-card{
+    background: #2a3c54bd;
+
+}
+
+.mat-list-item-content.activeTab {
+  background-color: #2e3c4d !important;
+  opacity: 1!important;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  }
+
+  .activeTab {
+    background-color: #2e3c4d !important;
+    opacity: 1!important;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+  button{
+    font-size: 18px !important;
+  }

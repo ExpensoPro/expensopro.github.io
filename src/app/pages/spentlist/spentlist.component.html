@@ -1,0 +1,101 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" color="primary">
+      <div class="row" id="groupList" style="display:block;">
+        <div>
+            <mat-form-field id="groupSelect" class="bg-info text-white"  class="full-width">
+                <mat-label>Select Group</mat-label>
+                <mat-select matNativeControl class="selectGrp" [(value)]="selected" (selectionChange)="onGroupSelected($event)" >
+                  <mat-option *ngFor="let group of groups"  [value]="group.id">
+                    {{group.groupName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <h3 class="text-center" style="margin-top:10px;">Spent List
+            <button (click)="navigateToAddSpend()" id="addSpentBtn" class="bg-success text-white" mat-raised-button ><mat-icon>add_circle</mat-icon> &nbsp;Add New spent</button>
+        </h3>
+        <div class="spentlist">
+            <!-- <h3 *ngFor="let user of users">{{user.email}}</h3> -->
+            <mat-card>
+                <table class="full-width">
+                    <tr>
+                        <td class="table-header">ID</td>
+                        <td class="table-header"> Description</td>
+                        <td class="table-header">Amount</td>
+                        <td class="table-header">Spent On</td>
+                        <td class="table-header">Spent By</td>
+                        <td class="table-header">Contributors</td>
+                        <td class="table-header">Date Added</td>
+                        <td class="table-header text-center" style="width: 230px;" >Action</td>
+                    </tr>
+                    <tr *ngFor="let spent of spents">
+                        <td>{{spent.id}}</td>
+                        <td>{{spent.description}}</td>
+                        <td>{{spent.amount}}</td>
+                        <td>{{spent.spentDate}}</td>
+                        <td><span>{{spent.user.firstName}}</span>&nbsp;<span>{{spent.user.lastName}}</span></td>
+                        <td>{{spent.totalContributors}}</td>
+                        <td>{{spent.dateCreated}}</td>
+                        <td class="text-center"><button  class="bg-info text-white" (click)="openViewSpentInfoCart(spent)" mat-raised-button style="min-width:40px !important; padding :0px 8px !important;"><mat-icon>visibility</mat-icon>&nbsp;|&nbsp;<mat-icon>edit</mat-icon></button>
+                            <button  class="bg-danger text-white ml20" (click)="deleteSpendFromGroup(spent.id)"  mat-raised-button style="min-width:40px !important; padding :0px !important;"><mat-icon>delete_forever</mat-icon></button>
+                        </td>
+                        <!-- <td *ngIf=""><button  mat-raised-button color="accent">View / Edit</button></td> -->
+                    </tr>
+                    
+                </table>
+            </mat-card>
+        </div>
+      </div>
+      <div class="row">
+        <div id="updateSpentDiv" class="col-md-5 offset-md-3">
+            <mat-card class="mt20">
+                <h3 class="text-center mt0">Spent Details</h3>
+                
+                <form>
+                    <!-- First Name -->
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Description</mat-label>
+                        <input [required]="true" [(ngModel)]="spent.description"  name="firstName" matInput placeholder="Enter spent description">
+                    </mat-form-field>
+    
+                    <!-- Last Name -->
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Amount</mat-label>
+                        <input [required]="true" [(ngModel)]="spent.amount" name="lastName" matInput placeholder="Enter amount">
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Select Group</mat-label>
+                        <mat-select matNativeControl class="selectGrp" [(value)]="selectedgrp" (selectionChange)="onSelected()" >
+                          <mat-option *ngFor="let group of groups"  [value]="group.id">
+                            {{group.groupName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    
+                    <div id="list1" class="user-dropdown-check-list" tabindex="100" style="width:100%; margin-bottom:25px">
+                        <span class="anchor" style="width:100%; background: whitesmoke; border-radius: 3px;" >Select Contributors</span>
+                        <ul class="select-user-list"  style="list-style: none; padding-left: 0px;">
+                            <li *ngFor="let user of guser">&nbsp;&nbsp;<input class="user-list-item" id="{{user.user.id}}" type="checkbox" />&nbsp;{{user.user.firstName}}</li>
+                        </ul>
+                    </div>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Choose a date</mat-label>
+                        <input id="spentDatePicker" matInput [matDatepicker]="picker" [(ngModel)]="spent.spentDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+    
+                    <div class="container" class="text-center">
+                        <button mat-raised-button *ngIf="currentUser.id==spent.user.id" (click)="submitUpdateSpentForm()" class="bg-success text-white">update</button>
+                        <button mat-raised-button (click)="clearFormFields()" class="bg-danger text-white" style="margin-left:20px;">clear</button>
+                        <button mat-raised-button (click)="closeUpdateForm()" class="bg-danger text-white" style="margin-left:20px;">close</button>
+                    </div>
+                </form>
+            </mat-card>
+          </div>
+      </div>
+      
+    </div>
+</div>

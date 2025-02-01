@@ -1,1 +1,107 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+*/
+.text-center{
+    text-align: center;
+}
+.full-width{
+    width: 100%;
+}
+body {
+    background: #8891a9a3;
+}
+.mat-toolbar.mat-primary {
+    background: #394759 !important;
+}
+
+.mt20{
+    margin-top: 20px !important;
+}
+.mr20{
+    margin-right: 20px !important;
+}
+.ml20{
+    margin-left: 20px !important;
+}
+.mb20{
+    margin-bottom: 20px !important;
+}
+.mt10{
+    margin-top: 10px !important;
+}
+.mr10{
+    margin-right: 10px !important;
+}
+.ml10{
+    margin-left: 10px !important;
+}
+.mb10{
+    margin-bottom: 10px !important;
+}
+.mt0{
+    margin-top: 0px !important;
+}
+.mr0{
+    margin-right: 0px !important;
+}
+.ml0{
+    margin-left: 0px !important;
+}
+.mb0{
+    margin-bottom: 0px !important;
+}
+.mt25{
+    margin-top: 25px !important;
+}
+.mr25{
+    margin-right: 25px !important;
+}
+.ml25{
+    margin-left: 25px !important;
+}
+.mb25{
+    margin-bottom: 25px !important;
+}
+
+app-side-nav{
+    width:90%;
+}
+
+app-user, .userList table{
+    width:100%
+}
+
+app-groups {
+    width: -webkit-fill-available;
+    margin-right: 30px;
+}
+app-spent{
+    width: 100%;
+}
+app-spentlist{
+    width: 100%;
+    margin-right: 30px;
+}
+app-dashboard{
+    width: 100%;
+    margin-right: 30px;
+}
+
+html {
+    width: 100%;
+}
+.table-header{
+    font-size: medium;
+    font-weight: bold;
+    color: darkslateblue;
+}
+
+.activeTab {
+    background-color: #2e3c4d !important;
+    opacity: 1!important;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+
+  

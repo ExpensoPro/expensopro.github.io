@@ -1,0 +1,12 @@
+<mat-card >
+  <mat-action-list>
+    <div mat-subheader class="ml10">Menu</div>
+    <button routerLink="user-dashboard" class="activeTab" (click)="makeActive($event)" mat-list-item><mat-icon mat-list-icon>home</mat-icon>Dashboard</button>
+    <button routerLink="user-list" (click)="makeActive($event)" mat-list-item><mat-icon mat-list-icon>person</mat-icon>Profile</button>
+    <button routerLink="group-list" (click)="makeActive($event)" mat-list-item><mat-icon mat-list-icon>groups</mat-icon>Groups</button>
+    <button routerLink="spend-manager" (click)="makeActive($event)" id="spend-tab" mat-list-item><img src="/assets/money.png" style="height:16px;width:18px;margin-right: 8px;margin-left: 6px;" alt="">Add spent</button>
+    <button routerLink="spend-list" (click)="makeActive($event)" mat-list-item><img src="/assets/slist.png" style="height:16px;width:18px;margin-right: 8px;margin-left: 6px;" alt="">Spent List</button>
+    <button (click)="makeActive($event)" mat-list-item><mat-icon mat-list-icon><img src="/assets/cash.png" style="height:20px;width:20px" alt=""></mat-icon>Expenses</button>
+    <button (click)="makeActive($event)" mat-list-item><img src="/assets/analytics.png" style="height:16px;width:18px;margin-right: 8px;margin-left: 6px;" alt="">Report</button>
+  </mat-action-list>
+</mat-card>

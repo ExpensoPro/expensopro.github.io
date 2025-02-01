@@ -1,0 +1,79 @@
+
+<div class="bootstrap-wrapper">
+  <div class="container-fluid" color="primary">
+    <div class="row" id="groupList" style="display:block;">
+      <div>
+          <mat-form-field id="groupSelect" class="bg-info text-white"   class="full-width groupSelect">
+              <mat-label>Select Group</mat-label>
+              <mat-select matNativeControl class="selectGrp" [(value)]="selected" (selectionChange)="onGroupSelected($event)" >
+                <mat-option *ngFor="let group of groups"  [value]="group.id">
+                  {{group.groupName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+      <div class="dashboardCards row" style="margin-left: 0px;">
+        <mat-card class="column-chart-card" style="width:612px;float: left;margin-right: 20px;">
+          
+          <mat-card-content>
+            <!-- <ejs-chart id="chart-container" isResponsive='border' [primaryXAxis]="primaryXAxis" >
+              <e-series-collection>
+              <e-series [dataSource]="chartData" type="Column" xName="user" yName="spent" name="Spent" width=1> 
+              </e-series>              
+              </e-series-collection>
+              </ejs-chart> -->
+              <fusioncharts width="590" 
+                  height="400" 
+                  type="column3d"
+                  [dataSource]="dataSource">
+              </fusioncharts>
+          </mat-card-content>
+          
+        </mat-card>
+
+
+        <mat-card class="pie-chart-card" style="width:612px;float: right;">
+          
+          <mat-card-content>
+              <fusioncharts width="590" 
+                  height="400" 
+                  type="pie3D"
+                  [dataSource]="dataSource" >
+              </fusioncharts>
+          </mat-card-content>
+          
+        </mat-card>
+
+
+        
+
+      </div>
+      <div class="row" style="margin-top: 20px; margin-bottom: 50px;margin-left: 0px;">
+        <mat-card class="pie-chart-card" style="width:612px; float: left;margin-right: 20px;">
+        
+          <mat-card-content>
+              <fusioncharts width="590" 
+                  height="400" 
+                  type="column3d"
+                  [dataSource]="chargedDataSource" >
+              </fusioncharts>
+          </mat-card-content>
+          
+        </mat-card>
+
+
+        <mat-card class="pie-chart-card" style="width:612px;float: right;">
+          
+          <mat-card-content>
+              <fusioncharts width="590" 
+                  height="400" 
+                  type="column3d"
+                  [dataSource]="summaryDataSource" >
+              </fusioncharts>
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

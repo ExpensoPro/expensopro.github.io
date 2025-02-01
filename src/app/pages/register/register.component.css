@@ -1,0 +1,19 @@
+.verify-btn{
+    color: #3fb519;
+    font-size: 14px;
+    background: white;
+    border: none;
+    margin-right:20px;
+}
+.resend-otp-btn{
+    font-size: 14px;
+    background: white;
+    color: #0f5bd0;
+    float: right;
+    margin-right: 10px;
+    border: none;
+}
+.otp-input-box{
+    border: 1px solid #d8cece;
+    border-radius: 3px;
+}

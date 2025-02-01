@@ -1,0 +1,60 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3" >
+                <mat-card class="mt20">
+                    <div class="container text-center">
+                        <img src="/assets/user_pen_icon.jpg" style="height: 130px;width: 130px;" alt="register user">
+                    </div>
+                    <h1 class="text-center mt0">Register Here</h1>
+                    
+                    <form>
+                        <!-- First Name -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>First Name</mat-label>
+                            <input [required]="true" [(ngModel)]="user.firstName" name="firstName" matInput placeholder="Placeholder">
+                        </mat-form-field>
+
+                        <!-- Last Name -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Last Name</mat-label>
+                            <input [required]="true" [(ngModel)]="user.lastName" name="lastName" matInput placeholder="Placeholder">
+                        </mat-form-field>
+
+                        <!-- Email -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input [required]="true" [(ngModel)]="user.email" name="email" type="email" matInput placeholder="Placeholder">
+                            <mat-hint>Email must be uniq for a user.</mat-hint>
+                        </mat-form-field>
+                        <Button class="verify-btn" (click)="verifyEmail(user.email)">verify email</Button><input (focusout)="validateOtp(user.email)" id="otpInput" class="otp-input-box" type="number" ><Button (click)="verifyEmail(user.email)" class="resend-otp-btn">Resend Otp</Button>
+
+                        <!-- Password -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input [required]="true" [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Placeholder">
+                            <mat-hint>Password must contain atleast [ one uppercase, lowercase, special character and one number.</mat-hint>
+                        </mat-form-field>
+
+                        <!-- Mobile -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Mobile</mat-label>
+                            <input [required]="true" [(ngModel)]="user.mobile" name="mobile" type="number" matInput placeholder="Placeholder">
+                        </mat-form-field>
+
+                        <!-- Role -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Role</mat-label>
+                            <input [readonly]="true" matInput style="color:#777070;" placeholder="USER" Value="USER">
+                        </mat-form-field>
+
+                        <div class="container" class="text-center">
+                            <button type="submit" (click)="registerFormSubmit()" mat-raised-button color="primary">Register</button>
+                            <button mat-raised-button color="accent" style="margin-left:20px;">clear</button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="toggleMenuOption()" id="menuOption" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span [routerLink]="''">Expenso</span>
+    <span class="example-spacer"></span>
+    <a *ngIf="!isLoggedIn" [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon mr20" aria-label="Example icon-button with heart icon">Log In
+      <!-- <mat-icon>login</mat-icon> -->
+    </a>
+    <a (click)="logout()" *ngIf="isLoggedIn" [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon mr20" aria-label="Example icon-button with heart icon">Log Out
+      <!-- <mat-icon>login</mat-icon> -->
+    </a>
+    <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" mat-icon-button class="example-icon mr20" aria-label="Example icon-button with share icon">Register
+      <!-- <mat-icon>account_circle</mat-icon> -->
+    </a>
+    <button *ngIf="isLoggedIn && user" mat-icon-button class="example-icon mr20" aria-label="Example icon-button with share icon" style="width: fit-content;">
+      {{loginService.getUser().email}}
+    </button>
+  </mat-toolbar>

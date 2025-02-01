@@ -1,0 +1,28 @@
+.userList td{
+    padding: 10px 20px;
+}
+.usrdet {
+    display:none;
+    position: absolute;
+    top: 35px;
+    left: 30%;
+}
+.usrdet mat-card{
+    max-width: 500px;
+    min-width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    background: #fff;
+    z-index: 1200;
+    box-shadow: 2px 2px purple;
+}
+.warning{
+    color:red;
+}
+.usrdet table td{
+    text-align: left;
+}
+.pdLeftTable{
+    padding-left:45px;
+}

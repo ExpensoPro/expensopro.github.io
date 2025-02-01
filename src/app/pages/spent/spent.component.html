@@ -1,0 +1,54 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3" >
+                <mat-card class="mt20">
+                    <h3 class="text-center mt0">Add Your Spent Here</h3>
+                    
+                    <form (ngSubmit)="submitSpentForm()">
+                        <!-- First Name -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Description</mat-label>
+                            <input [required]="true" [(ngModel)]="spent.description"  name="firstName" matInput placeholder="Enter spent description">
+                        </mat-form-field>
+
+                        <!-- Last Name -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Amount</mat-label>
+                            <input [required]="true" [(ngModel)]="spent.amount" name="lastName" matInput placeholder="Enter amount">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Select Group</mat-label>
+                            <mat-select matNativeControl class="selectGrp" [(value)]="selected" (selectionChange)="onSelected()" >
+                              <mat-option *ngFor="let group of userGroups"  [value]="group.id">
+                                {{group.groupName}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                        <div id="list1" class="user-dropdown-check-list" tabindex="100" style="width:100%; margin-bottom:25px">
+                            <span class="anchor" style="width:100%; background: whitesmoke; border-radius: 3px;" >Select Contributors</span>
+                            <ul class="select-user-list"  style="list-style: none; padding-left: 0px;">
+                                <li *ngFor="let user of guser">&nbsp;&nbsp;<input class="user-list-item" id="{{user.user.id}}" type="checkbox" />&nbsp;{{user.user.firstName}}</li>
+                            </ul>
+                        </div>
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Choose a date</mat-label>
+                            <input id="spentDatePicker" matInput [matDatepicker]="picker" [(ngModel)]="spent.spentDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <div class="container" class="text-center">
+                            <button type="submit" mat-raised-button color="primary">Add</button>
+                            <button mat-raised-button color="accent" style="margin-left:20px;">clear</button>
+                        </div>
+                    </form>
+                </mat-card>
+                
+            </div>
+        </div>
+    </div>
+</div>
