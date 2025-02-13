@@ -9,6 +9,7 @@ import { UserComponent } from './pages/user/user.component';
 import { GroupsComponent } from './pages/groups/groups.component';
 import { SpentComponent } from './pages/spent/spent.component';
 import { SpentlistComponent } from './pages/spentlist/spentlist.component';
+import { ReportComponent } from './pages/report/report.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,12 @@ const routes: Routes = [
       {
         path: "spend-list",
         component: SpentlistComponent,
+        pathMatch: "full",
+        canActivate: [UserGuard]
+      },
+      {
+        path: "report",
+        component: ReportComponent,
         pathMatch: "full",
         canActivate: [UserGuard]
       }

@@ -3,6 +3,16 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span [routerLink]="''">Expenso</span>
+    <div id="grp-selector-top">
+      <mat-form-field id="groupSelect" class="bg-info text-white"   class="full-width groupSelect">
+          <mat-label>Select Group</mat-label>
+          <mat-select matNativeControl class="selectGrp" [(value)]="selected" (selectionChange)="onGroupSelected($event)" >
+            <mat-option *ngFor="let group of groups"  [value]="group.id">
+              {{group.groupName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
     <span class="example-spacer"></span>
     <a *ngIf="!isLoggedIn" [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon mr20" aria-label="Example icon-button with heart icon">Log In
       <!-- <mat-icon>login</mat-icon> -->

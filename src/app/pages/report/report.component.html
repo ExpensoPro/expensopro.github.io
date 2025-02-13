@@ -1,1 +1,51 @@
-<p>report works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" color="primary">
+      <div class="row" id="groupList" style="display:block;">
+        <div>
+            <!-- <mat-form-field id="groupSelect" class="bg-info text-white"  class="full-width">
+                <mat-label>Select Group</mat-label>
+                <mat-select matNativeControl class="selectGrp" [(value)]="selected" (selectionChange)="onGroupSelected($event)" >
+                  <mat-option *ngFor="let group of groups"  [value]="group.id">
+                    {{group.groupName}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <button  id="downloadButton" (click)="downloadExcelReport()" class="bg-success text-white" mat-raised-button ><mat-icon>arrow_downward</mat-icon> &nbsp;Download Full Report</button>
+
+        </div>
+        
+        <div class="spentlist">
+            <h3 class="text-center" style="margin-top:10px;">Expense Summary</h3>
+            <mat-card>
+                <table class="full-width">
+                    <tr>
+                        <td><p class="table-header name-cell">User Name</p></td>
+                        <td><p class="table-header number-cell">Total Spent Amount</p></td>
+                        <td><p class="table-header number-cell">Total Charged Amount</p></td>
+                        <td><p class="table-header number-cell">To be paid/received</p></td>
+                        
+                    </tr>
+                    <tr *ngFor="let reportData of reportDataList">
+                        <td><p class="name-cell">{{reportData.userName}}</p></td>
+                        <td><p class="data number-cell">{{reportData.spentAmt}}</p></td>
+                        <td><p class="data number-cell">{{reportData.chargedAmt}}</p></td>
+                        <td><p class="data number-cell">{{reportData.debtAmt}}</p></td>
+                    </tr>
+                    
+                </table>
+            </mat-card>
+        </div>
+        <h3 class="text-center" style="margin-top:10px;">Payment Settlement</h3>
+        <div class="settlement">
+            <mat-card>
+                <table class="full-width">
+                    <tr *ngFor="let settlementText of settlementTextList">
+                        <td class="td-border"><p class="settlement-cell">{{settlementText}}</p></td>
+                    </tr>
+                    
+                </table>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+</div>

@@ -35,6 +35,7 @@ console.log("reached login");
     }
       this.loginService.generateToken(this.loginData).subscribe(
         (data:any)=>{
+          debugger;
           console.log("Success");
           console.log(data);
 

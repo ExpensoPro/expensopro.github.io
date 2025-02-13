@@ -4,6 +4,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import { LoginService } from '../services/login.service';
 import { GroupService } from '../services/group.service';
 import { SpentService } from '../services/spent.service';
+import swal from 'sweetalert2'
+import * as $ from "jquery";
+
 
 interface user{
   id:any,
@@ -162,18 +165,31 @@ border = { width: 2, color: 'red'};
     this.dataSource = this.source;
     this.chargedDataSource = this.chargedSource;
     this.summaryDataSource = this.summarySource;
-    this.loaduserGroupList(); 
+    // this.loaduserGroupList(); 
+    debugger;
+    this.getSelectedGroup();
   }
   
-  loaduserGroupList(){
-    this.currentUser = this.loginService.getUser();
-    this.groupService.loadUserList(this.currentUser.id).subscribe(
-      (data:any)=>{
-        this.groups = data;
-      },
-      (error:any)=>{
+  // loaduserGroupList(){
+  //   this.currentUser = this.loginService.getUser();
+  //   this.groupService.loadUserList(this.currentUser.id).subscribe(
+  //     (data:any)=>{
+  //       this.groups = data;
+  //     },
+  //     (error:any)=>{
 
-      })
+  //     })
+  // }
+  getSelectedGroup(){
+    if(localStorage.getItem("topSelectedGrp")!='' && localStorage.getItem("topSelectedGrp")!=null){
+      this.selected= localStorage.getItem("topSelectedGrp");
+      this.getAllUserSpendsDataForGroup(this.selected);
+      this.getAllUserChargedDataForGroup(this.selected);
+    }else{
+      $("#grp-selector-top").css("border","3px solid red");
+      $("#grp-selector-top").find('#grpSelErrorText').remove();
+      $("#grp-selector-top").append('<span id="grpSelErrorText" style="color:red;"> Please select group to proceed with dashboard data!</span>');
+    }
   }
   onGroupSelected(event:any){
     this.getAllUserSpendsDataForGroup(this.selected);

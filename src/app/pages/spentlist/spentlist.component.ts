@@ -7,6 +7,8 @@ import { format } from 'date-fns';
 import { GroupUserService } from 'src/app/services/group-user.service';
 import swal from 'sweetalert2'
 import { group } from '@angular/animations';
+import * as $ from "jquery";
+
 interface user{
   id:any,
   username:any,
@@ -78,19 +80,32 @@ export class SpentlistComponent implements OnInit {
   selectedGroupId:any;
   selectedgrp:any=this.selected;
   ngOnInit(): void {
-    this.loaduserGroupList();
-  }
-  loaduserGroupList(){
-    debugger;
-    this.currentUser = this.loginService.getUser();
-    this.groupService.loadUserList(this.currentUser.id).subscribe(
-      (data:any)=>{
-        this.groups = data;
-      },
-      (error:any)=>{
+    // this.loaduserGroupList();
+    this.getSelectedGroup();
 
-      })
   }
+  // loaduserGroupList(){
+  //   debugger;
+  //   this.currentUser = this.loginService.getUser();
+  //   this.groupService.loadUserList(this.currentUser.id).subscribe(
+  //     (data:any)=>{
+  //       this.groups = data;
+  //     },
+  //     (error:any)=>{
+
+  //     })
+  // }
+  getSelectedGroup(){
+      if(localStorage.getItem("topSelectedGrp")!='' && localStorage.getItem("topSelectedGrp")!=null){
+        this.currentUser = this.loginService.getUser();
+        this.selected= localStorage.getItem("topSelectedGrp");
+        this.getAllSpendsForGroup(this.selected);
+      }else{
+        $("#grp-selector-top").css("border","3px solid red");
+        $("#grp-selector-top").find('#grpSelErrorText').remove();
+        $("#grp-selector-top").append('<span id="grpSelErrorText" style="color:red;"> Please select group to proceed with spent-list data!</span>');
+      }
+    }
   onGroupSelected(event:any){
     this.getAllSpendsForGroup(this.selected);
   }
