@@ -4,9 +4,9 @@
             <div class="col-md-6 offset-md-3" >
                 <mat-card class="mt20">
                     <div class="container text-center">
-                        <img src="/assets/user_pen_icon.jpg" style="height: 130px;width: 130px;" alt="register user">
+                        <img src="/assets/user_pen_icon.jpg" style="height: 100px;width: 100px;" alt="register user">
                     </div>
-                    <h1 class="text-center mt0">Register Here</h1>
+                    <h3 class="text-center mt0">Register Here</h3>
                     
                     <form>
                         <!-- First Name -->
@@ -32,14 +32,31 @@
                         <!-- Password -->
                         <mat-form-field appearance="outline" class="full-width">
                             <mat-label>Password</mat-label>
-                            <input [required]="true" [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Placeholder">
+                            <div style="display:flex;">
+                                <input [required]="true" [(ngModel)]="user.password" name="password" [type]="show ? 'text' : 'password'" matInput placeholder="Placeholder"><mat-icon (click)="password()">{{show ?'visibility_off':'visibility'}}</mat-icon>
+                            </div>
                             <mat-hint>Password must contain atleast [ one uppercase, lowercase, special character and one number.</mat-hint>
+                        </mat-form-field>
+
+                        <!-- Confirm Password -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Confirm Password</mat-label>
+                            <div style="display:flex;">
+                                <input [required]="true" [(ngModel)]="confirmedPassword" name="confirm password" [type]="showCP ? 'text' : 'password'" matInput placeholder="Placeholder" (focusout)="matchPassword()"><mat-icon (click)="confirmPassword()">{{showCP ?'visibility_off':'visibility'}}</mat-icon>
+                            </div>
+                            <mat-hint id="confirmPassStatus"></mat-hint>
                         </mat-form-field>
 
                         <!-- Mobile -->
                         <mat-form-field appearance="outline" class="full-width">
                             <mat-label>Mobile</mat-label>
                             <input [required]="true" [(ngModel)]="user.mobile" name="mobile" type="number" matInput placeholder="Placeholder">
+                        </mat-form-field>
+
+                        <!-- UPI -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>UPI id</mat-label>
+                            <input [required]="true" [(ngModel)]="user.upi" name="upi" matInput placeholder="Placeholder">
                         </mat-form-field>
 
                         <!-- Role -->

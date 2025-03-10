@@ -11,6 +11,7 @@ interface User{
   lastName : String,
   email: String,
   mobile: String,
+  upi: string,
   authorities:any
 
 }
@@ -41,13 +42,22 @@ currentUserId: any;
     email:'',
     password:'',
     mobile: '',
+    upi: '',
+    role: ''
    }
   ngOnInit(): void {
+    debugger;
     this.currentUser = this.loginservice.getUser();
     //this.viewUserProfile(this.currentUser);
     //this.loadUserList();
     this.editAccessWarning = true;
     this.user= this.currentUser;
+    for(let i=0; i<this.currentUser.authorities.length;i++){
+      this.role += this.currentUser.authorities[i].authority
+      if(i<this.currentUser.authorities.length-1){
+        this.user.role += '+';
+      }
+  }
     $("#userPassword").val("");
     $("#userRole").val(this.role+""); 
     $(".usrdet").show();
@@ -77,6 +87,7 @@ currentUserId: any;
   }
 
   viewUserDetails(user: any) {
+    debugger;
     this.updatePassword = false;
     this.editAccessWarning = false;
     debugger;

@@ -152,3 +152,18 @@
 .spentlist{
     margin-top: 50px;
 }
+#qr-popup{
+  position: absolute;
+  min-width: 240px;
+  min-height: 250px;
+  padding: 5px;
+  top: 38%;
+  background: #89e7ff;
+  left: 30%;
+  display: none;
+}
+#qr-img{
+  width: 200px;
+  height: 200PX;
+  margin: 20px 0px 20px 20px;
+}

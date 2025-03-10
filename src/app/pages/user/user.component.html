@@ -85,10 +85,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td  class="pdLeftTable">UPI</td>
+                                <td>
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <input id="userUpi" [(ngModel)]="user.upi" name="upi" matInput placeholder={{user.upi}}>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td  class="pdLeftTable">Role</td>
                                 <td>
                                     <mat-form-field appearance="outline" class="full-width">
-                                        <input id="userRole" [readonly]=true  name="role" matInput>
+                                        <input id="userRole" [readonly]=true  name="role" matInput placeholder={{user.role}}>
                                     </mat-form-field>
                                 </td>
                             </tr>

@@ -10,6 +10,7 @@ import swal from 'sweetalert2'
 })
 export class RegisterComponent implements OnInit {
 
+
   constructor( private userService: UserServiceService, private snack:MatSnackBar,private comunicationService:ComunicationService) { }
  public user = {
   firstName:'',
@@ -17,9 +18,13 @@ export class RegisterComponent implements OnInit {
   email:'',
   password:'',
   mobile: '',
+  upi:''
  }
 
  isOtpValidated : boolean=false;
+ show: boolean = false;
+ showCP: boolean = false;
+ confirmedPassword = '';
   ngOnInit(): void {
   }
   registerFormSubmit(){
@@ -39,6 +44,8 @@ export class RegisterComponent implements OnInit {
       return;
     }else if(this.user.mobile=='' || this.user.mobile==null){
       //swal.fire("Warning","Mobile is required !!", "warning");
+      return;
+    }else if(this.user.upi=='' || this.user.upi==null){
       return;
     }
 
@@ -96,5 +103,23 @@ export class RegisterComponent implements OnInit {
         
       }
     )
+  }
+  password() {
+    this.show = !this.show;
+  }
+  confirmPassword() {
+    this.showCP = !this.showCP;
+  }
+  matchPassword(){
+    if(this.user.password==this.confirmedPassword){
+      $("#confirmPassStatus").text('password matched');
+      $("#confirmPassStatus").css('color','green');
+      $("#confirmPassStatus").show();
+
+    }else{
+      $("#confirmPassStatus").text('Please add identical password to confirm');
+      $("#confirmPassStatus").css('color','red');
+      $("#confirmPassStatus").show();
+    }
   }
 }

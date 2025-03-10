@@ -38,8 +38,10 @@
         <div class="settlement">
             <mat-card>
                 <table class="full-width">
-                    <tr *ngFor="let settlementText of settlementTextList">
-                        <td class="td-border"><p class="settlement-cell">{{settlementText}}</p></td>
+                    <tr *ngFor="let settlements of settlementOBJList">
+                        <td class="td-border"><p class="settlement-cell">{{settlements.settlementText}}</p></td>
+                        <td ><button *ngIf="(currentUser.id==settlements.userId)" (click)="generateQR(settlements.receiver,settlements.amount)" class="bg-success text-white" mat-raised-button> Click to pay</button></td>
+                        <!-- <td><button *ngIf="currentUser.id==settlements.userId" (click)="generateQR(settlements.receiver,settlements.amount)"> Click to pay</button></td> -->
                     </tr>
                     
                 </table>
@@ -48,3 +50,12 @@
       </div>
     </div>
 </div>
+<mat-card id="qr-popup">
+    <div style="display: flex;">
+        <div>
+            <img id="qr-img" src="/assets/spinner_black.gif" alt="">
+        </div>
+        <mat-icon (click)="closeQRPopup()">cancel</mat-icon>
+    </div>
+    
+</mat-card>

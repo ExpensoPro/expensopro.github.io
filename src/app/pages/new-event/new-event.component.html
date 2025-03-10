@@ -1,0 +1,28 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" color="primary">
+        <div class="row" id="groupList" style="display:block;">
+        
+            <h3 class="text-center" style="line-height: 46px;color: indigo;">Planing New Event? Let us help you!
+            </h3>
+            <div class="userList">
+                <!-- <h3 *ngFor="let user of users">{{user.email}}</h3> -->
+                <mat-card>
+                    <div style="display: flex;">
+                        <h4 style="color: darkmagenta;margin-right: 20px;">Explore Locations on google map</h4>
+                        <button mat-raised-button color="primary" (click)="openLocationPopup()" ><mat-icon>location_on</mat-icon> Map </button>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div>
+                        <div style="height: 500px;">
+                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                              <!-- Add a marker on the map -->
+                              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                            </agm-map>
+                          </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
